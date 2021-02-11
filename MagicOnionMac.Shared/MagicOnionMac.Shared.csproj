@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\MagicOnionMac.Unity\Assets\Scripts\ServerShared\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MagicOnion.Abstractions" Version="4.1.2" PrivateAssets="All" />
+      <PackageReference Include="MagicOnion.MSBuild.Tasks" Version="4.1.2" PrivateAssets="All" />
+      <PackageReference Include="MessagePack.MSBuild.Tasks" Version="2.1.194" PrivateAssets="All" />
+    </ItemGroup>
+
+    <!-- Call code generator after compile successfully. -->
+    <Target Name="GenerateMessagePack" AfterTargets="Compile">
+        <MessagePackGenerator Input="$(ProjectPath)" Output="..\MagicOnionMac.Unity\Assets\Scripts\Generated\MessagePack.Generated.cs" />
+    </Target>
+    <Target Name="GenerateMagicOnion" AfterTargets="Compile">
+        <MagicOnionGenerator Input="$(ProjectPath)" Output="..\MagicOnionMac.Unity\Assets\Scripts\Generated\MagicOnion.Generated.cs" />
+    </Target>
+
+</Project>
