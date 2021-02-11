@@ -6,6 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="..\MagicOnionMac.Unity\Assets\Scripts\ServerShared\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="MagicOnion.Abstractions" Version="4.1.2" PrivateAssets="All" />
       <PackageReference Include="MagicOnion.MSBuild.Tasks" Version="4.1.2" PrivateAssets="All" />
       <PackageReference Include="MessagePack.MSBuild.Tasks" Version="2.1.194" PrivateAssets="All" />

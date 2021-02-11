@@ -23,6 +23,7 @@ namespace MagicOnion
             if(isRegistered) return;
             isRegistered = true;
 
+            MagicOnionClientRegistry<ServerShared.Services.IMyFirstService>.Register((x, y, z) => new ServerShared.Services.MyFirstServiceClient(x, y, z));
 
         }
     }
@@ -79,8 +80,9 @@ namespace MagicOnion.Resolvers
 
         static MagicOnionResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(0)
+            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(1)
             {
+                {typeof(global::MagicOnion.DynamicArgumentTuple<int, int>), 0 },
             };
         }
 
@@ -94,8 +96,96 @@ namespace MagicOnion.Resolvers
 
             switch (key)
             {
+                case 0: return new global::MagicOnion.DynamicArgumentTupleFormatter<int, int>(default(int), default(int));
                 default: return null;
             }
+        }
+    }
+}
+
+#pragma warning restore 168
+#pragma warning restore 219
+#pragma warning restore 414
+#pragma warning restore 612
+#pragma warning restore 618
+#pragma warning disable 618
+#pragma warning disable 612
+#pragma warning disable 414
+#pragma warning disable 219
+#pragma warning disable 168
+
+namespace ServerShared.Services {
+    using System;
+    using MagicOnion;
+    using MagicOnion.Client;
+    using Grpc.Core;
+    using MessagePack;
+
+    [Ignore]
+    public class MyFirstServiceClient : MagicOnionClientBase<global::ServerShared.Services.IMyFirstService>, global::ServerShared.Services.IMyFirstService
+    {
+        static readonly Method<byte[], byte[]> SumAsyncMethod;
+        static readonly Func<RequestContext, ResponseContext> SumAsyncDelegate;
+
+        static MyFirstServiceClient()
+        {
+            SumAsyncMethod = new Method<byte[], byte[]>(MethodType.Unary, "IMyFirstService", "SumAsync", MagicOnionMarshallers.ThroughMarshaller, MagicOnionMarshallers.ThroughMarshaller);
+            SumAsyncDelegate = _SumAsync;
+        }
+
+        MyFirstServiceClient()
+        {
+        }
+
+        public MyFirstServiceClient(CallInvoker callInvoker, MessagePackSerializerOptions serializerOptions, IClientFilter[] filters)
+            : base(callInvoker, serializerOptions, filters)
+        {
+        }
+
+        protected override MagicOnionClientBase<IMyFirstService> Clone()
+        {
+            var clone = new MyFirstServiceClient();
+            clone.host = this.host;
+            clone.option = this.option;
+            clone.callInvoker = this.callInvoker;
+            clone.serializerOptions = this.serializerOptions;
+            clone.filters = filters;
+            return clone;
+        }
+
+        public new IMyFirstService WithHeaders(Metadata headers)
+        {
+            return base.WithHeaders(headers);
+        }
+
+        public new IMyFirstService WithCancellationToken(System.Threading.CancellationToken cancellationToken)
+        {
+            return base.WithCancellationToken(cancellationToken);
+        }
+
+        public new IMyFirstService WithDeadline(System.DateTime deadline)
+        {
+            return base.WithDeadline(deadline);
+        }
+
+        public new IMyFirstService WithHost(string host)
+        {
+            return base.WithHost(host);
+        }
+
+        public new IMyFirstService WithOptions(CallOptions option)
+        {
+            return base.WithOptions(option);
+        }
+   
+        static ResponseContext _SumAsync(RequestContext __context)
+        {
+            return CreateResponseContext<DynamicArgumentTuple<int, int>, int>(__context, SumAsyncMethod);
+        }
+
+        public global::MagicOnion.UnaryResult<int> SumAsync(int x, int y)
+        {
+            return InvokeAsync<DynamicArgumentTuple<int, int>, int>("IMyFirstService/SumAsync", new DynamicArgumentTuple<int, int>(x, y), SumAsyncDelegate);
         }
     }
 }
