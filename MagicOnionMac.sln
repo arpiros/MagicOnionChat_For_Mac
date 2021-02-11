@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicOnionMac.Shard", "MagicOnionMac.Shard\MagicOnionMac.Shard.csproj", "{ED158C1A-5BAC-49CD-8B9E-BA9286AC5306}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicOnionMac.Server", "MagicOnionMac.Server\MagicOnionMac.Server.csproj", "{23D4CDDF-519D-4E30-8AF5-2EDF695247DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{ED158C1A-5BAC-49CD-8B9E-BA9286AC5306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED158C1A-5BAC-49CD-8B9E-BA9286AC5306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED158C1A-5BAC-49CD-8B9E-BA9286AC5306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D4CDDF-519D-4E30-8AF5-2EDF695247DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D4CDDF-519D-4E30-8AF5-2EDF695247DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D4CDDF-519D-4E30-8AF5-2EDF695247DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D4CDDF-519D-4E30-8AF5-2EDF695247DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
