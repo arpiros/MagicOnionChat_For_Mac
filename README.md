@@ -9,6 +9,10 @@
 - Rider 2020.3
 - Unity 2020.2.3f1
 
+## 참고URL
+- https://github.com/Cysharp/MagicOnion
+- https://github.com/Cysharp/SlnMerge
+
 ## 주의사항
 1. 맥 환경에서 slnMerge를 이용해서 프로젝트를 합칠 경우, MagicOnionMac.Server프로젝트의 의존성이 깨지는 문제가 발생함.   
     - 해당 문제는 `Use MSbuild Version`을 15에서 16으로 수정하면 해결됨
