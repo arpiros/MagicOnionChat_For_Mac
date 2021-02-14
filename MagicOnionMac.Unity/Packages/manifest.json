@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.cysharp.magiconion": "https://github.com/Cysharp/MagicOnion.git?path=src/MagicOnion.Client.Unity/Assets/Scripts/MagicOnion",
     "com.cysharp.slnmerge": "https://github.com/Cysharp/SlnMerge.git?path=src",
+    "com.neuecc.messagepack": "https://github.com/neuecc/MessagePack-CSharp.git?path=src/MessagePack.UnityClient/Assets/Scripts/MessagePack",
     "com.unity.collab-proxy": "1.3.9",
     "com.unity.ide.rider": "2.0.7",
     "com.unity.ide.visualstudio": "2.0.5",
