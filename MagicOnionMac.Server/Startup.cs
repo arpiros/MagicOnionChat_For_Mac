@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Grpc.Net.Client;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,17 +10,21 @@ namespace MagicOnionMac.Server
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public static void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+
             services.AddGrpc();
             services.AddMagicOnion();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var magicOnionServiceDefinition =
+                app.ApplicationServices.GetService<MagicOnion.Server.MagicOnionServiceDefinition>();
+            if (magicOnionServiceDefinition == null)
+                throw new NullReferenceException("magicOnionServiceDefinition is null");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -28,6 +34,10 @@ namespace MagicOnionMac.Server
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapMagicOnionHttpGateway("_", magicOnionServiceDefinition.MethodHandlers, 
+                    GrpcChannel.ForAddress("http://localhost:5000"));
+                endpoints.MapMagicOnionSwagger("swagger", magicOnionServiceDefinition.MethodHandlers, "/_/");
+
                 endpoints.MapMagicOnionService();
 
                 endpoints.MapGet("/", async context =>
