@@ -1,11 +1,25 @@
 {
   "dependencies": {
+    "com.cysharp.magiconion": {
+      "version": "https://github.com/Cysharp/MagicOnion.git?path=src/MagicOnion.Client.Unity/Assets/Scripts/MagicOnion",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f117e6eb670a4ad9863b5e87eb41fef222209143"
+    },
     "com.cysharp.slnmerge": {
       "version": "https://github.com/Cysharp/SlnMerge.git?path=src",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "8c6a41e9983a79fe16b62d958139034d31ba3b12"
+    },
+    "com.neuecc.messagepack": {
+      "version": "https://github.com/neuecc/MessagePack-CSharp.git?path=src/MessagePack.UnityClient/Assets/Scripts/MessagePack",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2328df7cc3b4b84fd0842d07390a25b9043959c5"
     },
     "com.unity.collab-proxy": {
       "version": "1.3.9",
